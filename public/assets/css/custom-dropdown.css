@@ -1,0 +1,108 @@
+/* Custom Select Styles */
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.select-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.675em 1em;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.select-button:focus {
+    outline: none;
+    border-color: #FF5A1D;
+    box-shadow: 0 0 0 0.25rem rgba(255, 90, 29, 0.25);
+}
+
+.selected-value {
+    color: #212529;
+    font-weight: 500;
+}
+
+.arrow {
+    transition: transform ease-in-out 0.3s;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.arrow.rotate {
+    transform: rotate(180deg);
+}
+
+.select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1050;
+}
+
+.select-dropdown::-webkit-scrollbar {
+    width: 7px;
+}
+
+.select-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 25px;
+}
+
+.select-dropdown li {
+    padding: 10px;
+    cursor: pointer;
+    color: #212529;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.select-dropdown li.selected {
+    background-color: #FFF0E6;
+    /* Light orange background */
+    color: #FF5A1D;
+    font-weight: 600;
+}
+
+.select-dropdown li .tick {
+    display: none;
+    color: #FF5A1D;
+    font-size: 1.1em;
+}
+
+.select-dropdown li.selected .tick {
+    display: flex;
+}
+
+.select-dropdown li:hover,
+.select-dropdown li:focus {
+    background-color: #f8f9fa;
+}
+
+.select-dropdown.hidden {
+    display: none;
+}

@@ -1,0 +1,28 @@
+public function download_pay_slip($id) {
+
+        $basic_sallery = BasicSalary::where('user_id',$id)->get();
+        $allowances = Allowances::where('user_id',$id)->get();
+        $commissions = Commissions::where('user_id',$id)->get();
+        $loans = Loans::where('user_id',$id)->get();
+        $deductions = Deductions::where('user_id',$id)->get();
+        $overtimes = Overtimes::where('user_id',$id)->get();
+        $other_paymnets = OtherPaymnets::where('user_id',$id)->get();
+        $login_details = User::where('id',$id)->get();
+        $user_role = User::where('id',$id)->value('user_role');
+        if($user_role == 2){
+         $other_details = OtherHRManagerDetails::where('user_id',$id)->get();
+        }
+        if($user_role == 3){
+         $other_details = OtherEmployeeDetails::where('user_id',$id)->get();
+        }
+        if($user_role == 5){
+         $other_details = OtherHODDetails::where('user_id',$id)->get();
+        }
+         if($user_role == 6){
+         $other_details = OtherAuthoriserDetails::where('user_id',$id)->get();
+        }
+        $pdf = PDF::loadView('pdf.pay-slip', ['basic_sallery' => $basic_sallery,'allowances' => $allowances,'commissions' => $commissions
+    ,'loans' => $loans,'deductions' => $deductions,'overtimes' => $overtimes,'other_paymnets' => $other_paymnets,'login_details' => $login_details,
+    'other_details' => $other_details]);
+        return $pdf->download('Payment Slip - '.$id.'.pdf');
+    }

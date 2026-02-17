@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+</head>
+<style>
+
+ .salary-slip .empDetail {
+	 width: 100%;
+	 text-align: left;
+	 border: 2px solid black;
+	 border-collapse: collapse;
+	 table-layout: fixed;
+}
+ .salary-slip .head {
+	 margin: 10px;
+	 margin-bottom: 50px;
+     margin-right: 20px;
+	 width: 100%;
+}
+ .salary-slip .companyName {
+	 text-align: right;
+	 font-size: 25px;
+	 font-weight: bold;
+}
+.text-small{
+    font-size: 15px;
+}
+ .salary-slip .salaryMonth {
+	 text-align: center;
+}
+ .salary-slip .table-border-bottom {
+	 border-bottom: 1px solid;
+}
+ .salary-slip .table-border-right {
+	 border-right: 1px solid;
+}
+ .salary-slip .myBackground {
+	 padding-top: 10px;
+	 text-align: left;
+	 border: 1px solid black;
+	 height: 40px;
+}
+ .salary-slip .myAlign {
+	 text-align: center;
+	 border-right: 1px solid black;
+}
+ .salary-slip .myTotalBackground {
+	 padding-top: 10px;
+	 text-align: left;
+	 background-color: #ebf1de;
+	 border-spacing: 0px;
+}
+ .salary-slip .align-4 {
+	 width: 25%;
+	 float: left;
+}
+ .salary-slip .tail {
+	 margin-top: 35px;
+}
+ .salary-slip .align-2 {
+	 margin-top: 25px;
+	 width: 75%;
+	 float: left;
+}
+ .salary-slip .border-center {
+	 text-align: center;
+}
+ .salary-slip .border-center th, .salary-slip .border-center td {
+	 border: 1px solid black;
+}
+ .salary-slip th, .salary-slip td {
+	 padding-left: 6px;
+}
+.title{
+  font-size:12px;
+}
+.data{
+  font-size:12px;
+}
+.table-blue-heder{
+    font-size:14px;
+}
+td {
+    border:1px solid #000;
+}
+th {
+    border:1px solid #000;
+}
+</style>
+<?php
+use App\Models\Designations;
+use App\Models\Leaves;
+use App\Models\Overtimes;
+use App\Models\BankAccounts;
+use App\Models\BasicSalary;
+use App\Models\Deductions;
+use App\Models\Loans;
+use App\Models\OtherPaymnets;
+use App\Models\Allowances;
+use App\Models\Commissions;
+$currentDate = $yearMonth;
+
+  foreach($other_details as $other_detail){
+    $employee_id = $other_detail->user_id;
+    $employee_name = $other_detail->first_name.' '.$other_detail->last_name;
+    $employee_designation = Designations::where('id',$other_detail->designation)->value('designation');
+    $employee_epf_no = $other_detail->epf_no;
+
+  }
+  $allowed_leaves = Leaves::where('employee',  $employee_id)->where('status', 'Approved')->where('leave_type', '!=' , 'special')->get();
+  $allowed_leave_count = 0;
+  foreach($allowed_leaves as $allowed_leave){
+    $currentDate = $yearMonth;
+    if($allowed_leave->leave_duration == "Full Day"){
+        $leave_date = $allowed_leave->start_date;
+    }
+    else{
+        $leave_date = $allowed_leave->date;
+    }
+    $reqDate = date('Y-m', strtotime($leave_date));
+    if (($currentDate == $reqDate)){
+        $allowed_leave_count =  $allowed_leave_count+1;
+    }
+  }
+  $no_pay_leaves = Leaves::where('employee',  $employee_id)->where('status', 'Approved')->where('leave_type', 'special')->get();
+  $no_pay_leaves_count = 0;
+  foreach($no_pay_leaves as $no_pay_leave){
+    $npcurrentDate = $yearMonth;
+    if($no_pay_leave->leave_duration == "Full Day"){
+        $npleave_date = $no_pay_leave->start_date;
+    }
+    else{
+        $npleave_date = $no_pay_leave->date;
+    }
+    $npreqDate = date('Y-m', strtotime($npleave_date));
+    if (($npcurrentDate == $npreqDate)){
+        $no_pay_leaves_count =  $no_pay_leaves_count+1;
+    }
+  }
+$overtimes = Overtimes::where('user_id',  $employee_id)->get();
+$ot_count = 0;
+  foreach($overtimes as $overtime){
+    $otcurrentDate = $yearMonth;
+    $ot_date = $overtime->month_year;
+    $otreqDate = date('Y-m', strtotime($ot_date));
+    if (($otcurrentDate == $otreqDate)){
+        $ot_count =  $ot_count + $overtime->total_hours;
+    }
+  }
+$bank_accounts = BankAccounts::where('user_id',  $employee_id)->get();
+if($bank_accounts == null || $bank_accounts->isEmpty()){
+    $bank_name =  "-";
+    $account_number =   "-";
+    $bank_branch =   "-";
+}
+else{
+foreach($bank_accounts as $bank_account){
+    $bank_name =  $bank_account->bank_name;
+    $account_number =   $bank_account->account_number;
+    $bank_branch =   $bank_account->bank_branch;
+  }
+}
+
+$basic_salary_amount = $basic_salary;
+
+  $total_deductions = 0;
+  $total_allowances = 0;
+?>
+
+<body style="padding:20px;">
+<div class="salary-slip" >
+            <table class="empDetail">
+              <tr height="100px" style='background-color: #c2d69b'>
+
+                <td colspan='8' class="companyName"> HRM
+                    <p class="text-small">
+                        No 1, Colombo, Sri Lanka
+                    </p>
+                </td>
+              </tr>
+              <tr style="background-color:#00b0e4 ;">
+              <th colspan="8" style="padding-top:5px;padding-bottom:5px;text-align:center;"  class="table-blue-heder">
+                  Employee Details
+              </th>
+              </tr>
+              <tr>
+                <th colspan="2" class="title">
+                  UID -
+                </th>
+                <td colspan="2" class="data">
+                  EMP{{$employee_id}}
+                </td>
+                <th colspan="2" class="title">
+                  Name -
+                </th>
+                <td colspan="2" class="data">
+                  {{$employee_name}}
+                </td>
+              </tr>
+              <tr>
+                <th colspan="2"  class="title">
+                  Designation -
+                </th>
+                <td colspan="2"  class="data">
+                  EMP{{$employee_designation}}
+                </td>
+                <th colspan="2" class="title">
+                 EPF No -
+                </th>
+                <td colspan="2" class="data">
+                    {{$employee_epf_no}}
+                </td>
+              </tr>
+              <tr style="background-color:#00b0e4 ;">
+              <th colspan="8" style="padding-top:5px;padding-bottom:5px;text-align:center;"  class="table-blue-heder">
+                  Attendance
+              </th>
+
+              </tr>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="2"  class="title">
+                  Working Days -
+                </th>
+                <td colspan="2" class="data">
+                 31
+                </td>
+                <th colspan="2" class="title">
+                  Over Time Hours -
+                </th>
+                <td colspan="2" class="data">
+                  {{$ot_count}}
+                </td>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="2" class="title">
+                  Leave Allowed -
+                </th>
+                <td colspan="2" class="data">
+                {{$allowed_leave_count}}
+                </td>
+                <th colspan="2" class="title">
+                 No Pay Leave -
+                </th>
+                <td colspan="2" class="data">
+                  {{$no_pay_leaves_count}}
+                </td>
+              </tr>
+              <tr style="padding-bottom:20px;text-align:left">
+                <th colspan="2"  class="title">
+                  Leave Taken -
+                </th>
+                <td colspan="2" class="data">
+                {{$no_pay_leaves_count+$allowed_leave_count}}
+                </td>
+                <th colspan="2" class="title">
+
+                </th>
+                <td colspan="2" class="data">
+
+                </td>
+              </tr>
+              <tr style="background-color:#00b0e4 ;">
+              <th colspan="8" style="padding-top:5px;padding-bottom:5px;text-align:center;" class="table-blue-heder">
+                 Salary Transfered To
+              </th>
+
+              </tr>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="2"  class="title">
+                  Bank Name -
+                </th>
+                <td colspan="2" class="data">
+                 {{$bank_name }}
+                </td>
+                <th colspan="2" class="title">
+                  Account No -
+                </th>
+                <td colspan="2" class="data">
+                  {{$account_number}}
+                </td>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="2" class="title">
+                  Branch Name -
+                </th>
+                <td colspan="2" class="data">
+                {{$bank_branch}}
+                </td>
+                <th colspan="2" class="title">
+
+                </th>
+                <td colspan="2" class="data">
+
+                </td>
+              </tr>
+              <tr style="background-color:#00b0e4 ;">
+              <th colspan="8" style="padding-top:5px;padding-bottom:5px;text-align:center;" class="table-blue-heder">
+                Calculate Salary
+              </th>
+
+              </tr>
+
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="8" class="title">
+                  Deductions
+                </th>
+
+              </tr>
+              <?php
+              $deductions = Deductions::where('user_id',$employee_id)->get();
+              foreach($deductions as $deduction){
+                $dicurrentDate = $yearMonth;
+                $di_date = $deduction->month_year;
+                $direqDate = date('Y-m', strtotime($di_date));
+                if (($dicurrentDate == $direqDate)){
+                    $total_deductions = $total_deductions + $deduction->amount;
+                    ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                {{$deduction->title}}
+                </th>
+                <td colspan="4"  class="data">
+                {{$deduction->amount}}
+                </td>
+              </tr>
+              <?php
+              }}
+              ?>
+               <?php
+              $loans = Loans::where('user_id',$employee_id)->get();
+              foreach($loans as $loan){
+                $locurrentDate = date("Y");
+                $locurrentDate = date('Y', strtotime($locurrentDate));
+                $lo_date = $loan->month_year;
+                $loreqDate = date('Y', strtotime($lo_date));
+                if (($locurrentDate == $loreqDate)){
+                    $total_deductions = $total_deductions + ($deduction->amount/$loan->number_of_installments);
+                ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                {{$loan->title}}
+                </th>
+                <td colspan="4"  class="data">
+                {{$deduction->amount/$loan->number_of_installments}}
+                </td>
+              </tr>
+              <?php
+              }}
+              ?>
+              <?php
+              $other_paymnets = OtherPaymnets::where('user_id',$employee_id)->get();
+              foreach($other_paymnets as $other_paymnet){
+                $paycurrentDate = $yearMonth;
+                $pay_date = $other_paymnet->month_year;
+                $payreqDate = date('Y-m', strtotime($pay_date));
+                if (($paycurrentDate == $payreqDate)){
+                    $total_deductions = $total_deductions + $other_paymnet->amount;
+                ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                {{$other_paymnet->title}}
+                </th>
+                <td colspan="4"  class="data">
+                {{$other_paymnet->amount}}
+                </td>
+              </tr>
+              <?php
+              }}
+              $epf_diduction = ($basic_salary_amount/100)*8;
+               $total_deductions = $total_deductions + $epf_diduction;
+              ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                EPF
+                </th>
+                <td colspan="4"  class="data">
+                {{$epf_diduction}}
+                </td>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                  Total Deductions
+                </th>
+                <th colspan="4" class="title">
+                {{$total_deductions}}
+                </th>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="8" class="title">
+                Allowances
+                </th>
+
+              </tr>
+              <?php
+              $allowances = Allowances::where('user_id',$employee_id)->get();
+              foreach($allowances as $allowance){
+                $alwcurrentDate = $yearMonth;
+                $alw_date = $allowance->month_year;
+                $alwreqDate = date('Y-m', strtotime($alw_date));
+                if (($alwcurrentDate == $alwreqDate)){
+                    $total_allowances = $total_allowances + $allowance->allowance_amount;
+                ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                {{$allowance->allowance_title}}
+                </th>
+                <td colspan="4"  class="data">
+                {{$allowance->allowance_amount}}
+                </td>
+              </tr>
+              <?php
+              }}
+              ?>
+               <?php
+              $commissions = Commissions::where('user_id',$employee_id)->get();
+              foreach($commissions as $commission){
+                $comcurrentDate = $yearMonth;
+
+                $com_date = $commission->month_year;
+                $comreqDate = date('Y-m', strtotime($com_date));
+                if (($comcurrentDate == $comreqDate)){
+                    $total_allowances = $total_allowances + $commission->commission_amount;
+                ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                {{$commission->commission_title}}
+                </th>
+                <td colspan="4"  class="data">
+                {{$commission->commission_amount}}
+                </td>
+              </tr>
+              <?php
+              }}
+              ?>
+               ?>
+               <?php
+            $overtimes = Overtimes::where('user_id',  $employee_id)->get();
+            foreach($overtimes as $overtime){
+            $otcurrentDate =$yearMonth;
+             $ot_date = $overtime->month_year;
+            $otreqDate = date('Y-m', strtotime($ot_date));
+            if (($otcurrentDate == $otreqDate)){
+                    $total_allowances = $total_allowances + $overtime->total_hours*$overtime->rate;
+            ?>
+              <tr style="padding-bottom:5px;text-align:left">
+                <th colspan="4"  class="title" >
+                {{$overtime->title}}
+                </th>
+                <td colspan="4"  class="data">
+                {{$overtime->total_hours*$overtime->rate}}
+                </td>
+              </tr>
+              <?php
+              }}
+              ?>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                  Total Allowances
+                </th>
+                <th colspan="4" class="title">
+                {{$total_allowances}}
+                </th>
+              </tr>
+
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                  Basic Salary
+                </th>
+                <th colspan="4" class="title">
+                {{$basic_salary_amount}}
+                </th>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                Deductions
+                </th>
+                <th colspan="4" class="title">
+                {{' - '.$total_deductions}}
+                </th>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                Salary After Deductions
+                </th>
+                <th colspan="4" class="title">
+
+                {{$basic_salary_amount-$total_deductions}}
+                </th>
+              </tr>
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                Allowances
+                </th>
+                <th colspan="4" class="title">
+                {{' + '.$total_allowances}}
+                </th>
+              </tr>
+
+              <tr  style="padding-bottom:5px;text-align:left">
+                <th colspan="4" class="title">
+                Total Net Salary
+                </th>
+                <th colspan="4" class="title">
+                {{($basic_salary_amount-$total_deductions) + $total_allowances}}
+                </th>
+              </tr>
+              </tbody>
+            </table >
+
+          </div >
+
+</body>
+
+</html>

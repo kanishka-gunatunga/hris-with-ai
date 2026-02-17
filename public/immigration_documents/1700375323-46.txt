@@ -1,0 +1,17 @@
+"Leave Details",,,,
+"Employee Name","EPF No","Leave Type"
+
+"Employee 1",4234234324,
+"Employee 1",4234234324,
+"Employee 1",4234234324,
+"Employee 1",4234234324,
+"Employee 1",4234234324,special
+
+
+"Toltal Leave Count"
+"Employee Name","EPF No","Total Leaves"
+
+"Employee 1",4234234324,5
+"Employee 1",4234234324,0
+"Employee 2",,0
+Authoriser,43654645768768,0

@@ -1,0 +1,94 @@
+        <form style="text-align: center;">
+                <select name="city_select" id="city_select">
+                        <option value="" disabled>Select</option>
+                        <option value="Colombo">Colombo</option>
+                        <option value="Kandy">Kandy</option>
+                </select>
+        <input type="submit" class="btnSubmit" value="Shop Now" id="Citysubmit">
+        <div class="error" id="error"></div>
+        </form>
+
+<script>
+jQuery(document).ready(function($){
+    $("#Citysubmit").click(function(){
+        event.preventDefault();
+        var city = $("#city_select").val();
+        console.log(city);
+        if( city === "" )
+        {
+            $("#error").show();
+            document.getElementById("error").innerHTML = "City is required.";
+            return;
+        }
+        else
+        {
+        $.ajax({
+        url: 'https://freshharvests.com/wp-admin/admin-ajax.php',
+        data: {'action' : 'ajax_request', 'id': 'select_city', 'city': city}, 
+        dataType: 'json',
+        beforeSend: function ()
+        {
+                $("#error").show();
+                document.getElementById("error").innerHTML = ' Please wait <i><img src="../wp-content/uploads/2020/12/loader.gif" style="width: 15px;"></i>' ; 
+                
+        },
+        success : function( data )
+        {
+            if(data[1] == "accepted")
+            {
+                $("#error").show();
+                document.getElementById("error").innerHTML = ' Redirecting… <i><img src="../wp-content/uploads/2020/12/loader.gif" style="width: 15px;"></i>';
+                window.location.replace('https://freshharvests.com/shop');
+            }
+            if(data[1] == "rejected")
+            {   
+                $("#error").show();
+                document.getElementById("error").innerHTML = " Error ";
+            }
+            if(data[1] == "cart_check")
+            {   
+                if (confirm('Changing the city may clear your current cart. you want to proceed ?'))
+                {
+                    $.ajax({
+                    url: 'https://freshharvests.com/wp-admin/admin-ajax.php',
+                    data: {'action' : 'ajax_request', 'id': 'reset_cart', 'city': city}, 
+                    dataType: 'json',
+                    beforeSend: function ()
+                    {
+                            $("#error").show();
+                            document.getElementById("error").innerHTML = ' Please wait <i><img src="../wp-content/uploads/2020/12/loader.gif" style="width: 15px;"></i>' ; 
+                            
+                    },
+                    success : function( data )
+                    {
+                        if(data[1] == "reset_complete")
+                        {
+                            $("#error").show();
+                            document.getElementById("error").innerHTML = ' Redirecting… <i><img src="../wp-content/uploads/2020/12/loader.gif" style="width: 15px;"></i>';
+                            window.location.replace('https://freshharvests.com/shop');
+                        }
+                    },
+                    complete: function (data)
+                    {
+                        
+                        
+                    }
+                  });
+                }
+                else
+                {
+                    window.history.back();
+                }
+
+            }
+        },
+        complete: function (data)
+        {
+            
+            
+        }
+      });
+    }
+});
+});
+</script>

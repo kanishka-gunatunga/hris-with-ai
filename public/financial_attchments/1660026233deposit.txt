@@ -1,0 +1,52 @@
+Title,Name,"Last 4 Digits of the Card","National Identity Card Number",Email,"Contact Number","Massage (Optional)"
+Mr,suresh,7633,840171752v,shanvishan28@gmail.com,+94773472984,
+Mr,"Roland Bogodawatta",8527,662430668V,rolandbogoda@gmail.com,+94773826741,
+Mr,"Baddewela 0",0564,630694906v,lashankadinuthi@gmail.com,+94777741836,
+Ms,W.A.W.S.Fonseka,2383,625870780V,fonvajira@gmail.com,+94777152623,
+Mr,"A.Upeksha.De. Silva",1545,602823490V,ushouselk1@gmail.com,+94777362717,
+Mrs,Hassim,6937,676060251v,suweilhassim@yahoo.com,+94777351816,
+Mr,"Anura Hulangamuwa",4884,693452546V,anura439@gmail.com,+94704149151,
+Mr,"Samuel Clive de Silva",9682,511960363v,clvdesilva@gmail.com,+94777272701,
+Mr,Nassar,5715,"600940570 v",mohammednazaar3@gmail.com,+94773741785,
+Mr,"Asela Marawila",9399,723390117v,wijayaholdings@gmail.com,+94718370232,
+Mr,"H M C N Kumara",4439,890140831v,chathuranamal89@gmail.com,+94773877527,
+Mr,DSKMAYADUNNE,6614,640181281V,mayaelectronicnivithigala@gmail.com,+94777212999,
+Mr,"M r a bary",9847,"953493454 V",ahamedbary1214@gmail.com,+94753707060,
+Mr,Ranjith,9337,690370557v,judenimal5@gmail.com,+94774012577,"I need"
+Mr,"Sandun Fernando",6310,761282417v,sandun@kln.ac.lk,+94717037852,
+Mr,"W.M Ruwan shantha",3519,730433891V,shantha.ruwan9@gmail.com,+94716555759,
+Mr,"W.K.S.S. Sunethpriya",6713,753590412V,tuskerguardians@gmail.com,+94769255775,
+Ms,"Thushara Rekawa",3482,197171300324,trekawa@gmail.com,+94777363689,
+Mr,"MLC MADUSHANKA",4758,198902000290,mlcm8901@gmail.com,+94714363081,
+Mrs,K.A.T.Subasinghe,8782,197086101670,ajanthasubasinghe1226@gmail.com,+94775250287,
+Mr,Madurasinghe,2541,893653325v,hashanmadurasinghe@gmail.com,+94778178013,e-statement
+Mr,P.A.D.Abeyratne,2976,471182583V,pattiabey@gmail.com,+94777440947,"Pl. change my address as
+
+P.A.D. Abeyratne
+25 Dambugaha Watta
+Talahena
+Malabe
+10115."
+Mr,Rukshan,6107,197820401193,udsrukshan7@gmail.com,+94714262169,
+Mr,"A S Senathilaka",1553,602601790v,senathilakas60@gmail.com,+94717777360,
+Mr,"Ashan Perera",5740,872081160V,sattack_87@hotmail.com,+94777665645,
+Mr,"PSA BANDARA",4138,198908601849,senarathabekoon0326@gmail.com,+94776589112,"Free bill"
+Mr,"S.P.C.K. Pathirana",2976,763160521V,chanakapathirana@gmail.com,+94772440174,"pls add me for the Credit Card E-Statement"
+Mr,"WHAT BANDARA",2208,197725903627,thusharabandara058087@gmail.com,+94756083526,
+Mr,"R. Nadeera Jeewamal",5322,198027702297,rjnadeera@gmail.com,+94773753458,
+Mr,"AMWB Niranjan",No,801942377v,niranjanbandara34@gmail.com,+94702515737,
+Mr,"DAMINDA PUSHPAKUMARA",PUSH,872401342v,avdpushpakumara87@gmail.com,+94774713232,
+Mr,D.S.Amaradewa,4574,833530208V,shanthaqm5193@gmail.com,+94770266762,"registration for the e statements"
+Mrs,"T C Perera",3246,476532663v,thilakanibm@yahoo.com,+94774421821,
+Mr,"praveen peiris",2157,"942050488 v",praveenpeiris456@gmail.com,+94717886711,
+Mr,Asanka,5219,199121100435,asankawithanage11@gmail.com,+94713882962,
+Ms,"W.A.Deepika Sandamali",3138,905131230v,deepika.sandamali2021@gmail.com,+94774566801,
+Ms,"W.A.Deepika Sandamali",9609,905131230v,deepika.sandamali2021@gmail.com,+94774566801,
+Mr,"darshana edirisinghe",4846,198518610021,darshanasuneth@gmail.com,+94772542978,
+Mrs,Chalani,4491,856962334V,buddhi.prabha@gmail.com,+94715478444,
+Mr,Test,9876,912000028V,tharindu91is@gmail.com,+94332228264,
+Mr,test,9876,912000028V,tharindu91is@gmail.com,+94332228264,
+Mr,test,1111,111111111111,a@gmail.com,+94412345678,Test
+Mr,"Tharindu Gunathilaka",7896,7896541236V,tharindu91is@gmail.com,+94332228264,
+Mr,Test,1233,222222222V,test@gmail.com,+94711111111,
+Mr,Test,9632,698521478V,test@gmail.com,+94332228264,
