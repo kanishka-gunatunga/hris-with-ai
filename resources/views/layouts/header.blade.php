@@ -225,17 +225,25 @@ date_default_timezone_set('Asia/Colombo');
         }
 
         /* --- CONTENT AREA & HEADER --- */
-        #layout-wrapper .main-content {
-            margin-left: var(--sidebar-width) !important;
-            width: calc(100% - var(--sidebar-width)) !important;
+        #layout-wrapper>.main-content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            left: 0 !important;
-            transform: none !important;
-            position: relative !important;
-            padding-left: 0 !important;
+            left: 0;
+            transform: none;
+            position: relative;
+            padding-left: 0;
             /* Fix for potential double gap */
+        }
+
+        /* Specific reset for nested main-content divs found in page files to prevent double-margin on desktop */
+        #main-content-nested-reset,
+        .main-content .main-content {
+            margin-left: 0 !important;
+            width: 100% !important;
+            padding-left: 0 !important;
         }
 
         .custom-header {
@@ -410,9 +418,9 @@ date_default_timezone_set('Asia/Colombo');
                 transform: translateX(0);
             }
 
-            .main-content {
-                margin-left: 0;
-                width: 100%;
+            #layout-wrapper>.main-content {
+                margin-left: 0 !important;
+                width: 100% !important;
             }
 
             .mobile-menu-btn {
@@ -427,9 +435,8 @@ date_default_timezone_set('Asia/Colombo');
 
         /* Main Content Layout Fix */
         .page-content {
-            padding: calc(var(--header-height) + 1.5rem) 1.5rem 1.5rem 1.5rem !important;
-            padding-top: 1.5rem !important;
-            margin-left: -260px !important;
+            padding: calc(var(--header-height) + 1.5rem) 1.5rem 1.5rem 1.5rem;
+            padding-top: 1.5rem;
         }
 
         .dashboard-title {
@@ -1273,7 +1280,7 @@ date_default_timezone_set('Asia/Colombo');
                             $role = "Authoriser";
                             $profileRoute = url('edit-authoriser/' . $user->id);
                         }
-                                                                                                                                                                                                                                                                    ?>
+                                                                                                                                                                                                                                                                                                                                                    ?>
                                         <div class="profile-dropdown-container">
                                             <button class="profile-btn" onclick="toggleProfileMenu()">
                                                 <img src="{{ asset('user_images/' . $image) }}"

@@ -55,7 +55,7 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_emp}}">0</span></h2>
+                                                            data-target="{{$no_of_emp}}">{{$no_of_emp}}</span></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -69,7 +69,7 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_hod}}">0</span></h2>
+                                                            data-target="{{$no_of_hod}}">{{$no_of_hod}}</span></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_hrm}}">0</span></h2>
+                                                            data-target="{{$no_of_hrm}}">{{$no_of_hrm}}</span></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +97,8 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{ $no_of_client}}">0</span></h2>
+                                                            data-target="{{ $no_of_client}}">{{$no_of_client}}</span>
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +112,8 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_projects}}">0</span></h2>
+                                                            data-target="{{$no_of_projects}}">{{$no_of_projects}}</span>
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,7 +127,7 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_tasks}}">0</span></h2>
+                                                            data-target="{{$no_of_tasks}}">{{$no_of_tasks}}</span></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +141,8 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_departments}}">0</span></h2>
+                                                            data-target="{{$no_of_departments}}">{{$no_of_departments}}</span>
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,7 +156,8 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_locations}}">0</span></h2>
+                                                            data-target="{{$no_of_locations}}">{{$no_of_locations}}</span>
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +171,7 @@ use Carbon\Carbon;
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h2 class="mb-0"><span class="counter-value"
-                                                            data-target="{{$no_of_jobs}}">0</span></h2>
+                                                            data-target="{{$no_of_jobs}}">{{$no_of_jobs}}</span></h2>
                                                 </div>
                                             </div>
                                         </div>

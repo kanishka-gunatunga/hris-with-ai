@@ -50,7 +50,8 @@ use App\Models\OtherEmployeeDetails;
                                 }
                             </style>
                             <div class="konnect-table-wrapper">
-                                <table id="buttons-datatables" class="display table konnect-table mb-0" style="width:100%">
+                                <table id="buttons-datatables" class="display table konnect-table mb-0"
+                                    style="width:100%">
                                     <thead>
                                         <tr>
                                             <th class="ps-4">Training Type</th>
@@ -63,17 +64,17 @@ use App\Models\OtherEmployeeDetails;
                                     </thead>
                                     <tbody>
                                         <?php foreach ($lists as $list) {
-        $training_type_name = TrainingType::where('id', $list->training_type)->value('training_type');
-        $trainer_name = TrainingTrainers::where('id', $list->trainer)->value('first_name') . ' ' . TrainingTrainers::where('id', $list->trainer)->value('last_name');
-        $assigned_empoyees = TrainingListEmployees::where('list_id', $list->id)->get();
+    $training_type_name = TrainingType::where('id', $list->training_type)->value('training_type');
+    $trainer_name = TrainingTrainers::where('id', $list->trainer)->value('first_name') . ' ' . TrainingTrainers::where('id', $list->trainer)->value('last_name');
+    $assigned_empoyees = TrainingListEmployees::where('list_id', $list->id)->get();
                                         ?>
                                         <tr>
 
                                             <td class="ps-4">{{$training_type_name}} </td>
                                             <td class="">
                                                 <?php    foreach ($assigned_empoyees as $assigned_empoyee) {
-            echo OtherEmployeeDetails::where('user_id', $assigned_empoyee->employee_id)->value('first_name') . ' ' . OtherEmployeeDetails::where('user_id', $assigned_empoyee->employee_id)->value('last_name') . ',';
-        } ?>
+        echo OtherEmployeeDetails::where('user_id', $assigned_empoyee->employee_id)->value('first_name') . ' ' . OtherEmployeeDetails::where('user_id', $assigned_empoyee->employee_id)->value('last_name') . ',';
+    } ?>
                                             </td>
                                             <td class="">{{$trainer_name}} </td>
                                             <td class="">{{$list->start_date}} </td>
@@ -83,8 +84,8 @@ use App\Models\OtherEmployeeDetails;
                                                     <a href="{{ url('edit-training-list/' . $list->id) }}"
                                                         class="btn-icon-soft-blue" title="Edit">
                                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round">
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round">
                                                             <path
                                                                 d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
                                                             </path>
@@ -96,8 +97,8 @@ use App\Models\OtherEmployeeDetails;
                                                     <a href="{{ url('delete-training-list/' . $list->id) }}"
                                                         class="btn-icon-soft-red" title="Delete">
                                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round">
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round">
                                                             <polyline points="3 6 5 6 21 6"></polyline>
                                                             <path
                                                                 d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">

@@ -49,7 +49,8 @@ use App\Models\PMTaskUsers;
                                 }
                             </style>
                             <div class="konnect-table-wrapper">
-                                <table id="buttons-datatables" class="display table konnect-table mb-0" style="width:100%">
+                                <table id="buttons-datatables" class="display table konnect-table mb-0"
+                                    style="width:100%">
                                     <thead>
                                         <tr>
                                             <th class="ps-4"> Training Types</th>
@@ -106,26 +107,26 @@ use App\Models\PMTaskUsers;
 
 
 
-        </div>
-        <!-- container-fluid -->
     </div>
-    <!-- End Page-content -->
-    @include('layouts.footer')
-    <script>
-        $("#company").select2({
-            placeholder: "Select Company",
-            allowClear: true
-        });
-        $("#employee").select2({
-            placeholder: "Select Employee",
-            allowClear: true
-        });
-        $("#department").select2({
-            placeholder: "Select Department",
-            allowClear: true
-        });
-        $("#award_type").select2({
-            placeholder: "Select Award Type",
-            allowClear: true
-        });
-    </script>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+@include('layouts.footer')
+<script>
+    $("#company").select2({
+        placeholder: "Select Company",
+        allowClear: true
+    });
+    $("#employee").select2({
+        placeholder: "Select Employee",
+        allowClear: true
+    });
+    $("#department").select2({
+        placeholder: "Select Department",
+        allowClear: true
+    });
+    $("#award_type").select2({
+        placeholder: "Select Award Type",
+        allowClear: true
+    });
+</script>
