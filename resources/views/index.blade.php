@@ -38,9 +38,10 @@
 
     <div class="grid grid-col-1 justify-items-center w-full">
         <!-- Logo Area -->
-        <!-- <div class="relative center w-48 h-32 top-10 flex items-center justify-center">
-            <h2 class="text-4xl font-bold text-[#FF5A1D]">HRIS</h2>
-        </div> -->
+      <div class="relative center w-48 h-32 top-10  items-center justify-center">
+            <!--<h2 class="text-4xl font-bold text-[#FF5A1D]">HRIS</h2>-->
+             <img src="{{ asset('assets/images/slt_logo_new.png') }}" class="mb-4">
+        </div>
 
         <!-- Login Card -->
         <div

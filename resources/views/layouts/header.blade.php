@@ -744,7 +744,8 @@ date_default_timezone_set('Asia/Colombo');
         <aside class="custom-sidebar" id="sidebar">
             <div class="sidebar-logo">
                 <a href="{{ url('dashboard') }}" style="text-decoration: none;">
-                    <h2>HRIS</h2>
+                    <!--<h2>HRIS</h2>-->
+                    <img src="{{ asset('assets/images/slt_logo_new.png') }}" style="width:150px;">
                 </a>
             </div>
 
