@@ -4024,3 +4024,18 @@ if ($pansion_type == null) { ?>
             });
         });
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    flatpickr("[name='year_month']", {
+        dateFormat: "Y-m",
+        allowInput: false,
+        plugins: [
+            new monthSelectPlugin({
+                shorthand: true,
+                dateFormat: "Y-m",
+                altFormat: "F Y"
+            })
+        ]
+    });
+});
+</script>

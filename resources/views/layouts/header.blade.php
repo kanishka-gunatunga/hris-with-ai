@@ -29,6 +29,8 @@ date_default_timezone_set('Asia/Colombo');
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
 
     <!-- App Css (Original Theme) -->
     <!-- We purposefully keep this AFTER bootstrap to ensure theme overrides work, but BEFORE our custom CSS -->
@@ -732,6 +734,34 @@ date_default_timezone_set('Asia/Colombo');
         .btn-theme-orange:hover {
             background-color: #e04f1a;
             color: white;
+        }
+        
+        .btn-info {
+            background-color: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-info:hover {
+            background-color: #e04f1a;
+            color: white;
+        }
+        .dashboard-card-title{
+            min-height: 35px;
+        }
+        .flatpickr-monthSelect-month.today {
+            border-color: #e04f1a;
+            background:#e04f1a;
+            color:#fff;
+        }
+        .flatpickr-monthSelect-month.selected, .flatpickr-monthSelect-month.startRange, .flatpickr-monthSelect-month.endRange {
+            background-color: #ff5a1d;
+            color: #fff;
+            border-color: #ff5a1d;
         }
     </style>
 </head>
