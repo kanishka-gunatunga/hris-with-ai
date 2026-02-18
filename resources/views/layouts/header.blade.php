@@ -1225,7 +1225,7 @@ date_default_timezone_set('Asia/Colombo');
 
                 <div class="header-actions">
                     <!-- Notification Bell -->
-                    <button class="notification-btn" aria-label="Notifications">
+                    <!-- <button class="notification-btn" aria-label="Notifications">
                         <svg class="notification-icon" width="22" height="22" viewBox="0 0 22 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -1237,7 +1237,7 @@ date_default_timezone_set('Asia/Colombo');
                                 stroke="currentColor" stroke-width="1.5" />
                         </svg>
                         <span class="notification-badge"></span>
-                    </button>
+                    </button> -->
 
                     <!-- User Profile -->
                     @auth
@@ -1280,7 +1280,7 @@ date_default_timezone_set('Asia/Colombo');
                             $role = "Authoriser";
                             $profileRoute = url('edit-authoriser/' . $user->id);
                         }
-                                                                                                                                                                                                                                                                                                                                                    ?>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ?>
                                         <div class="profile-dropdown-container">
                                             <button class="profile-btn" onclick="toggleProfileMenu()">
                                                 <img src="{{ asset('user_images/' . $image) }}"
