@@ -763,6 +763,15 @@ date_default_timezone_set('Asia/Colombo');
             color: #fff;
             border-color: #ff5a1d;
         }
+        .bg-primary{
+             background-color: #ff5a1d !important;
+        }
+        .progress-label .progress-bar .label {
+            background-color: #ff5a1d !important;
+        }
+        .progress-label .progress-bar .label:after {
+            border-top-color: #ff5a1d !important;
+        }
     </style>
 </head>
 
@@ -792,30 +801,7 @@ date_default_timezone_set('Asia/Colombo');
                     </a>
 
                     <!-- Leaves -->
-                    @if(Auth::user()->user_role != 1 || Auth::user()->user_role != 3)
-                        <div>
-                            <button class="nav-link-custom" onclick="toggleSubmenu('leaves-menu')"
-                                aria-expanded="{{ request()->is('employee-leaves/*') || request()->is('manage-leaves') ? 'true' : 'false' }}">
-                                <div class="nav-content">
-                                    <i class="mdi mdi-logout"></i>
-                                    <span>Leaves</span>
-                                </div>
-                                <i class="mdi mdi-chevron-down"></i>
-                            </button>
-                            <div id="leaves-menu"
-                                class="submenu-container {{ request()->is('employee-leaves/*') || request()->is('manage-leaves') ? 'show' : '' }}">
-                                @if (Auth::user()->user_role != 1)
-                                    <a href="{{ url('employee-leaves/' . Auth::user()->id) }}"
-                                        class="submenu-link {{ request()->is('employee-leaves/' . Auth::user()->id) ? 'active' : '' }}">My
-                                        Leaves</a>
-                                @endif
-                                @if (Auth::user()->user_role != 3)
-                                    <a href="{{ url('manage-leaves') }}"
-                                        class="submenu-link {{ request()->is('manage-leaves') ? 'active' : '' }}">Manage Leaves</a>
-                                @endif
-                            </div>
-                        </div>
-                    @endif
+                    
 
                     <!-- Users (Admin Only) -->
                     @if (Auth::user()->user_role == 1)
@@ -842,6 +828,30 @@ date_default_timezone_set('Asia/Colombo');
                                     class="submenu-link {{ request()->is('blocked-users') ? 'active' : '' }}">Blocked Users</a>
                                 <a href="{{ url('blocked-ips') }}"
                                     class="submenu-link {{ request()->is('blocked-ips') ? 'active' : '' }}">Blocked IP's</a>
+                            </div>
+                        </div>
+                    @endif
+                    @if(Auth::user()->user_role != 1 || Auth::user()->user_role != 3)
+                        <div>
+                            <button class="nav-link-custom" onclick="toggleSubmenu('leaves-menu')"
+                                aria-expanded="{{ request()->is('employee-leaves/*') || request()->is('manage-leaves') ? 'true' : 'false' }}">
+                                <div class="nav-content">
+                                    <i class="mdi mdi-logout"></i>
+                                    <span>Leaves</span>
+                                </div>
+                                <i class="mdi mdi-chevron-down"></i>
+                            </button>
+                            <div id="leaves-menu"
+                                class="submenu-container {{ request()->is('employee-leaves/*') || request()->is('manage-leaves') ? 'show' : '' }}">
+                                @if (Auth::user()->user_role != 1)
+                                    <a href="{{ url('employee-leaves/' . Auth::user()->id) }}"
+                                        class="submenu-link {{ request()->is('employee-leaves/' . Auth::user()->id) ? 'active' : '' }}">My
+                                        Leaves</a>
+                                @endif
+                                @if (Auth::user()->user_role != 3)
+                                    <a href="{{ url('manage-leaves') }}"
+                                        class="submenu-link {{ request()->is('manage-leaves') ? 'active' : '' }}">Manage Leaves</a>
+                                @endif
                             </div>
                         </div>
                     @endif
